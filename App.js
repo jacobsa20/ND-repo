@@ -69,7 +69,6 @@ export default function App() {
               <IconButton icon="save-alt" label="Save" onPress={onSaveImageAsync} />
             </View>
         </View>
-          //<View />
         ) : (
       <View style={styles.footerContainer}>
         <Button theme ="primary" label ="Choose a photo" onPress= {pickImageAsync}/>
@@ -97,12 +96,20 @@ const styles = StyleSheet.create({
   },
   imageContainer:{
     flex: 1,
-    paddingTop: 58,
+    paddingTop: 60,
   },
-  image: {
-    width: 38,
-    height: 58,
-    borderRadius: 2,
+  // image: {
+  //   width: 2,
+  //   height: 2,
+  //   borderRadius: 2,
+  // },
+  selectedImage:{
+      width: 10,
+      height: 10,
+  },
+  backgroundImageSource:{
+      width: 100,
+      height: 100,
   },
   optionsContainer: {
     position: 'absolute',
