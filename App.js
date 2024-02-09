@@ -47,7 +47,6 @@ export default function App() {
       quality: 1,
     });
     if (!result.canceled){
-      //console.log(result);
       setSelectedImage(result.assets[0].uri);
       setShowAppOptions(true);
     } else{
