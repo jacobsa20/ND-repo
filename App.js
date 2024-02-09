@@ -1,3 +1,4 @@
+//Alli Linhart 2024
 //imports from react libraries
 import { GestureHandler, GestureHandlerRootView} from "react-native-gesture-handler";
 import { StyleSheet, Text, View, Image } from 'react-native';
@@ -38,7 +39,6 @@ export default function App() {
   };
 
   const onSaveImageAsync = async () => {
-    // we will implement this later
   };
 
   const pickImageAsync = async ()=> {
