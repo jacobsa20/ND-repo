@@ -1,0 +1,16 @@
+Alli Linhart
+2024
+App Outline
+
+
+Sundance Film Festival Diary App
+
+Purpose: Keep track of your Sundance itinerary, document thoughts on films,
+and rate overall experience.
+
+Need:
+Homepage
+Calendar page
+    Add calendar events
+Add entry page
+    Film Title, Date, Rating
