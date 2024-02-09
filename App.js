@@ -11,7 +11,6 @@ import EmojiPicker from './components/EmojiPicker';
 import EmojiSticker from './components/EmojiSticker';
 import IconButton from './components/IconButton';
 import ImageViewer from './components/ImageViewer';
-import style from './components/style';
 
 import * as ImagePicker from 'expo-image-picker';
 import { StatusBar } from 'expo-status-bar';
