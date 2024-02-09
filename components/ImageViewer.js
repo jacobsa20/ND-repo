@@ -1,29 +1,6 @@
 import { StyleSheet, Image } from 'react-native';
-//import { Gesture, GestureDetector } from 'react-native-gesture-handler';
 
 export default function ImageViewer({ backgroundImageSource, selectedImage }) {
-  // const translateX = useSharedValue(0);
-  // const translateY = useSharedValue(0);
-  // const scaleImage = useSharedValue(imageSize);
-  // const drag= Gesture.Pan()
-  //   .onChange((event)=>{
-  //     translateX.value += event.changeX;
-  //     translateY.value += event.changeY;
-  //   });
-
-  //   const containerStyle = useAnimatedStyle(()=> {
-  //     return {
-  //       transform: [
-  //         {
-  //           translateX: translateX.value,
-  //         },
-  //         {
-  //           translateY: translateY.value,
-  //         },
-  //       ],
-  //     };
-  //   });
-
   const imageSource= selectedImage ? {uri: selectedImage} : backgroundImageSource;
     return <Image source={imageSource} style={styles.image} />;
 }
