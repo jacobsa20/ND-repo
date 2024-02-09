@@ -98,18 +98,10 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: 60,
   },
-  // image: {
-  //   width: 2,
-  //   height: 2,
-  //   borderRadius: 2,
-  // },
-  selectedImage:{
-      width: 10,
-      height: 10,
-  },
-  backgroundImageSource:{
-      width: 100,
-      height: 100,
+  image: {
+    width: 2,
+    height: 2,
+    borderRadius: 2,
   },
   optionsContainer: {
     position: 'absolute',
