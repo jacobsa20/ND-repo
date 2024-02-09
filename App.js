@@ -56,7 +56,7 @@ export default function App() {
   }
   
 //turn circle button into a choose photo button instead of emoji sticker button
-//use click and drag to move the photo around the page. Collage-ify the app
+//use click and drag to move the photo around the page. Collage-ify the
 
   return (
     <GestureHandlerRootView style={styles.container}>
