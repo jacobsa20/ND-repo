@@ -9,6 +9,9 @@ export default function EmojiList({ onSelect, onCloseModal }) {
     require('../assets/images/emoji4.png'),
     require('../assets/images/emoji5.png'),
     require('../assets/images/emoji6.png'),
+    require('../assets/images/golden dome.png'),
+    require('../assets/images/beatles logo.png'),
+    require('../assets/images/beatles headshot.png'),
   ]);
 
   return (
