@@ -55,6 +55,9 @@ export default function App() {
     }
   }
   
+//turn circle button into a choose photo button instead of emoji sticker button
+//use click and drag to move the photo around the page. Collage-ify the app
+
   return (
     <GestureHandlerRootView style={styles.container}>
       <View style= {styles.imageContainer}>
@@ -97,11 +100,6 @@ const styles = StyleSheet.create({
   imageContainer:{
     flex: 1,
     paddingTop: 60,
-  },
-  image: {
-    width: 2,
-    height: 2,
-    borderRadius: 2,
   },
   optionsContainer: {
     position: 'absolute',

@@ -7,8 +7,8 @@ export default function ImageViewer({ backgroundImageSource, selectedImage }) {
 
 const styles = StyleSheet.create({
   image: {
-    width: 320,
-    height: 440,
+    width: 500,
+    height: 500,
     borderRadius: 18,
   },
 });
