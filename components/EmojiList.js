@@ -35,9 +35,9 @@ export default function EmojiList({ onSelect, onCloseModal }) {
 
 const styles = StyleSheet.create({
   listContainer: {
-    borderTopRightRadius: 10,
-    borderTopLeftRadius: 10,
-    paddingHorizontal: 20,
+    borderTopRightRadius: 20,
+    borderTopLeftRadius: 20,
+    paddingHorizontal: 10,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',

@@ -1,8 +1,8 @@
 //Alli Linhart 2024
 //imports from react libraries
 import { GestureHandler, GestureHandlerRootView} from "react-native-gesture-handler";
-import { StyleSheet, Text, View, Image } from 'react-native';
-import { useState} from 'react';
+import { StyleSheet, Text, View, Image, Platform } from 'react-native';
+import { useState, useRef} from 'react';
 
 //imports from components folder
 import Button from './components/Button'
@@ -14,18 +14,24 @@ import IconButton from './components/IconButton';
 import ImageViewer from './components/ImageViewer';
 
 import * as ImagePicker from 'expo-image-picker';
+import * as MediaLibrary from 'expo-media-library';
+import { captureRef} from 'react-native-view-shot';
 import { StatusBar } from 'expo-status-bar';
-
+import DomToImage from "dom-to-image";
 
 
 const BackgroundImage = require ('./assets/images/background-image.png')
-
+//object function
 export default function App() {
+  //components
+  const [status, requestPermission]= MediaLibrary.usePermissions();
   const [pickdEmoji, setPickedEmoji]= useState(null);
   const [selectedImage, setSelectedImage]= useState(null);
   const [isModalVisible, setIsModalVisible]= useState(false);
   const [showAppOptions, setShowAppOptions]= useState(false);
   
+  const imageRef = useRef();
+
   const onReset = () => {
     setShowAppOptions(false);
   };
@@ -39,6 +45,35 @@ export default function App() {
   };
 
   const onSaveImageAsync = async () => {
+    if (Platform.OS !== 'web'){
+    try{
+      const localUri = await captureRef(imageRef, {
+        height: 500,
+        quality: 1,
+      });
+
+      await MediaLibrary.saveToLibraryAsync(localUri);
+      if (localUri){
+        alert("Save Complete");
+      }
+    } catch (e){
+      console.log(e);
+    }
+  } else {
+    try{
+      const dataUrl = await DomToImage.toJpeg(imageRef.current, {
+        quality: 1,
+        width: 500,
+        height: 500,
+      });
+      let link = document.createElement('a');
+      link.download = 'photoshop.jpeg';
+      link.href = dataUrl;
+      link.click();
+    } catch (e){
+      console.log(e);
+    }
+  }
   };
 
   const pickImageAsync = async ()=> {
@@ -46,6 +81,11 @@ export default function App() {
       allowsEditing: true,
       quality: 1,
     });
+
+    if(status=== null){
+      requestPermission();
+    }
+
     if (!result.canceled){
       //console.log(result);
       setSelectedImage(result.assets[0].uri);
@@ -58,11 +98,14 @@ export default function App() {
 //turn circle button into a choose photo button instead of emoji sticker button
 //use click and drag to move the photo around the page. Collage-ify the
 
+//what I'll see onscreen:
   return (
     <GestureHandlerRootView style={styles.container}>
       <View style= {styles.imageContainer}>
+      <View ref= {imageRef} collapsable= {false}>
         <ImageViewer backgroundImageSource={BackgroundImage} selectedImage={selectedImage} />
         {pickdEmoji && <EmojiSticker imageSize={40} stickerSource={pickdEmoji} />}
+        </View>
         </View>
         {showAppOptions ? (
           <View style={styles.optionsContainer}>
@@ -81,7 +124,7 @@ export default function App() {
       <EmojiPicker isVisible={isModalVisible} onClose={onModalClose}>
           <EmojiList onSelect={setPickedEmoji} onCloseModal={onModalClose} />
         </EmojiPicker>
-      <StatusBar style="auto" />
+      <StatusBar style="light" />
     </GestureHandlerRootView>
   );
 }
@@ -93,13 +136,13 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    backgroundColor: '#25292e',
+    backgroundColor: '#172311',
     alignItems: 'center',
     justifyContent: 'center',
   },
   imageContainer:{
     flex: 1,
-    paddingTop: 60,
+    //paddingTop: 60,
   },
   optionsContainer: {
     position: 'absolute',
