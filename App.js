@@ -1,7 +1,7 @@
 //Alli Linhart 2024
 //imports from react libraries
 import { GestureHandler, GestureHandlerRootView} from "react-native-gesture-handler";
-import { StyleSheet, Text, View, Image, Platform } from 'react-native';
+import { StyleSheet, Text, View, Image, Platform, ScrollView } from 'react-native';
 import { useState, useRef, useEffect} from 'react';
 
 //imports from components folder
@@ -30,6 +30,7 @@ export default function App() {
   const [isModalVisible, setIsModalVisible]= useState(false);
   const [showAppOptions, setShowAppOptions]= useState(false);
 
+  //modal->content presented above the app
   const [count, setCount] = useState(0);
   const [calc, setCalc] = useState(0);
   
@@ -111,7 +112,7 @@ export default function App() {
     <GestureHandlerRootView style={styles.container}>
       <View style= {styles.imageContainer}>
       <View ref= {imageRef} collapsable= {false}>
-        <ImageViewer backgroundImageSource={BackgroundImage} selectedImage={selectedImage} />
+        <ImageViewer backgroundImageSource={BackgroundImage} selectedImage={selectedImage}/>
         {pickdEmoji && <EmojiSticker imageSize={40} stickerSource={pickdEmoji} />}
         </View>
         </View>
