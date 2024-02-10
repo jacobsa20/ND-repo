@@ -2,7 +2,7 @@
 //imports from react libraries
 import { GestureHandler, GestureHandlerRootView} from "react-native-gesture-handler";
 import { StyleSheet, Text, View, Image, Platform } from 'react-native';
-import { useState, useRef} from 'react';
+import { useState, useRef, useEffect} from 'react';
 
 //imports from components folder
 import Button from './components/Button'
@@ -29,8 +29,15 @@ export default function App() {
   const [selectedImage, setSelectedImage]= useState(null);
   const [isModalVisible, setIsModalVisible]= useState(false);
   const [showAppOptions, setShowAppOptions]= useState(false);
+
+  const [count, setCount] = useState(0);
+  const [calc, setCalc] = useState(0);
   
   const imageRef = useRef();
+
+  useEffect(() =>{
+    setCalc(() => count + 1);
+  }, [count]);
 
   const onReset = () => {
     setShowAppOptions(false);
@@ -63,7 +70,7 @@ export default function App() {
     try{
       const dataUrl = await DomToImage.toJpeg(imageRef.current, {
         quality: 1,
-        width: 500,
+        width: 300,
         height: 500,
       });
       let link = document.createElement('a');
@@ -99,6 +106,7 @@ export default function App() {
 //use click and drag to move the photo around the page. Collage-ify the
 
 //what I'll see onscreen:
+//<View count= {count+1}> </View>
   return (
     <GestureHandlerRootView style={styles.container}>
       <View style= {styles.imageContainer}>
