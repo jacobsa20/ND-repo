@@ -9,8 +9,11 @@ export default function ImageViewer({ backgroundImageSource, selectedImage }) {
 
 const styles = StyleSheet.create({
   image: {
-    width: 500,
+    width: 300,
     height: 500,
+    borderWidth: 4,    
+    borderColor: "#fde9ea",
     borderRadius: 18,
+
   },
 });
