@@ -12,6 +12,7 @@ import EmojiPicker from './components/EmojiPicker';
 import EmojiSticker from './components/EmojiSticker';
 import IconButton from './components/IconButton';
 import ImageViewer from './components/ImageViewer';
+import CountButton from "./components/CountButton";
 
 import * as ImagePicker from 'expo-image-picker';
 import * as MediaLibrary from 'expo-media-library';
@@ -36,9 +37,7 @@ export default function App() {
   
   const imageRef = useRef();
 
-  useEffect(() =>{
-    setCalc(() => count + 1);
-  }, [count]);
+  useEffect(() => console.log (count));
 
   const onReset = () => {
     setShowAppOptions(false);
@@ -95,7 +94,7 @@ export default function App() {
     }
 
     if (!result.canceled){
-      //console.log(result);
+
       setSelectedImage(result.assets[0].uri);
       setShowAppOptions(true);
     } else{
@@ -108,6 +107,7 @@ export default function App() {
 
 //what I'll see onscreen:
 //<View count= {count+1}> </View>
+//onPress={()=>setCount(count+1)}
   return (
     <GestureHandlerRootView style={styles.container}>
       <View style= {styles.imageContainer}>
@@ -119,9 +119,10 @@ export default function App() {
         {showAppOptions ? (
           <View style={styles.optionsContainer}>
             <View style={styles.optionsRow}>
-              <IconButton icon="refresh" label="Reset" onPress={onReset} />
+              <IconButton icon="refresh" label="Reset" onPress={onReset}/>
               <CircleButton onPress={onAddSticker} />
               <IconButton icon="save-alt" label="Save" onPress={onSaveImageAsync} />
+              <CountButton label ="Count me!" onPress={()=>setCount(count+1)}/>
             </View>
         </View>
         ) : (
