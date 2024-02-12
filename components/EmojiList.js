@@ -14,6 +14,9 @@ export default function EmojiList({ onSelect, onCloseModal }) {
     require('../assets/images/beatles headshot.png'),
   ]);
 
+  //designed the golden dome, beatles logo, and beatles headshot pngs. Originally used them for
+  //embroidery projects
+
   return (
     <FlatList
       horizontal
