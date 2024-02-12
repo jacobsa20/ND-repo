@@ -1,8 +1,11 @@
+//Alli Linhart 2024
+
 import { View, Pressable, StyleSheet } from 'react-native';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 
 
 //create button that picks an emoji, designed with a reaction icon that looks like an emoji
+//meant to draw attention
 export default function CircleButton({ onPress }) {
   return (
     <View style={styles.circleButtonContainer}>

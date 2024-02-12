@@ -1,12 +1,23 @@
+//Alli Linhart 2024
+
 import { StyleSheet, View, Pressable, Text } from 'react-native';
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 
+//purpose of button: to pull photo from phone/ computer
 export default function Button({ label, theme, onPress }) {
   if(theme === "primary"){
     return (
-            <View style={[styles.buttonContainer, { borderWidth: 4, borderColor: "#ff69b4", borderRadius: 18 }]}>
+            <View style={[
+              styles.buttonContainer, { 
+                borderWidth: 4, 
+                borderColor: "#ff69b4", 
+                borderRadius: 18 
+                }]}>
             <Pressable
-                style={[styles.button, { backgroundColor: "#fff" }]}
+                style={[
+                  styles.button, { 
+                    backgroundColor: "#fff" 
+                    }]}
                 onPress={onPress}
           >
             <FontAwesome
@@ -15,7 +26,12 @@ export default function Button({ label, theme, onPress }) {
               color="#25292e"
               style={styles.buttonIcon}
             />
-            <Text style={[styles.buttonLabel, { color: "#25292e" }]}>{label}</Text>
+            <Text style={[
+              styles.buttonLabel, { 
+                color: "#25292e" 
+                }]}>
+                {label}
+                </Text>
           </Pressable>
         </View>
       );

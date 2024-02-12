@@ -1,6 +1,7 @@
+//Alli Linhart 2024
+
 import Animated, { useAnimatedStyle, useSharedValue, withSpring} from 'react-native-reanimated';
 import { Gesture, GestureDetector } from 'react-native-gesture-handler';
-import { View, Image } from 'react-native';
 
 export default function EmojiSticker({ imageSize, stickerSource }) {
 
@@ -42,15 +43,22 @@ export default function EmojiSticker({ imageSize, stickerSource }) {
     };
   });
 
+  //returns emoji to a location near the center of the photo
+  // so it doesn't print offscreen
   return (
     <GestureDetector gesture={drag}>
-    <Animated.View style={[containerStyle, { top: -225, right: -150 }]}>
+    <Animated.View style={[containerStyle, { 
+      top: -225, 
+      right: -150 
+      }]}>
       <GestureDetector gesture={doubleTap}>
       <Animated.Image
         source={stickerSource}
         resizeMode="contain"
-        style={[imageStyle,{ width: imageSize, height: imageSize }]}
-      />
+        style={[imageStyle,{ 
+          width: imageSize, 
+          height: imageSize 
+          }]}/>
       </GestureDetector>
     </Animated.View>
     </GestureDetector>

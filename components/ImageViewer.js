@@ -1,5 +1,6 @@
-import { StyleSheet, FlatList, Image, Platform, Pressable} from 'react-native';
+//Alli Linhart 2024
 
+import { StyleSheet, Image} from 'react-native';
 
 //this is the image that gets picked
 export default function ImageViewer({ backgroundImageSource, selectedImage }) {
@@ -9,6 +10,10 @@ export default function ImageViewer({ backgroundImageSource, selectedImage }) {
     
     );
 }
+
+//WANTS:
+//I want the app to scale the photos to fit either 300 x 500 vertical photos
+//or 500 x 300 landscaped photos
 
 const styles = StyleSheet.create({
   image: {

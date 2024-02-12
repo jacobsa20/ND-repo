@@ -1,3 +1,5 @@
+//Alli Linhart 2024
+
 import { Modal, View, Text, Pressable, StyleSheet } from 'react-native';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 
