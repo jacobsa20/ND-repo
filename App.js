@@ -33,11 +33,13 @@ export default function App() {
 
   //modal->content presented above the app
   const [count, setCount] = useState(0);
-  const [calc, setCalc] = useState(0);
+ // const [calc, setCalc] = useState(0);
   
   const imageRef = useRef();
 
-  useEffect(() => console.log (count));
+  useEffect(() => {
+    setCount((count) => count +1);
+  }, 100);
 
   const onReset = () => {
     setShowAppOptions(false);
@@ -119,10 +121,10 @@ export default function App() {
         {showAppOptions ? (
           <View style={styles.optionsContainer}>
             <View style={styles.optionsRow}>
-              <IconButton icon="refresh" label="Reset" onPress={onReset}/>
               <CircleButton onPress={onAddSticker} />
+              <IconButton icon="refresh" label="Reset" onPress={onReset}/>
               <IconButton icon="save-alt" label="Save" onPress={onSaveImageAsync} />
-              <CountButton label ="Count me!" onPress={()=>setCount(count+1)}/>
+              <IconButton icon= "plus-one" label= "Count" onPress={(count) => count +1}/>
             </View>
         </View>
         ) : (
