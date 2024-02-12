@@ -12,7 +12,6 @@ import EmojiPicker from './components/EmojiPicker';
 import EmojiSticker from './components/EmojiSticker';
 import IconButton from './components/IconButton';
 import ImageViewer from './components/ImageViewer';
-import CountButton from "./components/CountButton";
 
 import * as ImagePicker from 'expo-image-picker';
 import * as MediaLibrary from 'expo-media-library';
@@ -33,13 +32,14 @@ export default function App() {
 
   //modal->content presented above the app
   const [count, setCount] = useState(0);
- // const [calc, setCalc] = useState(0);
   
   const imageRef = useRef();
 
   useEffect(() => {
-    setCount((count) => count +1);
-  }, 100);
+    setInterval(() => {
+      setCount(count +1);
+    }, 10);
+  });
 
   const onReset = () => {
     setShowAppOptions(false);
@@ -107,7 +107,6 @@ export default function App() {
 //turn circle button into a choose photo button instead of emoji sticker button
 //use click and drag to move the photo around the page. Collage-ify the
 
-//what I'll see onscreen:
 //<View count= {count+1}> </View>
 //onPress={()=>setCount(count+1)}
   return (
@@ -125,6 +124,7 @@ export default function App() {
               <IconButton icon="refresh" label="Reset" onPress={onReset}/>
               <IconButton icon="save-alt" label="Save" onPress={onSaveImageAsync} />
               <IconButton icon= "plus-one" label= "Count" onPress={(count) => count +1}/>
+              <text> Count: {count} times</text>
             </View>
         </View>
         ) : (
