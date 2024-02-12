@@ -1,3 +1,5 @@
+//Alli Linhart 2024
+
 import { useState } from 'react';
 import { StyleSheet, FlatList, Image, Platform, Pressable } from 'react-native';
 
@@ -15,7 +17,7 @@ export default function EmojiList({ onSelect, onCloseModal }) {
   ]);
 
   //designed the golden dome, beatles logo, and beatles headshot pngs. Originally used them for
-  //embroidery projects
+  //embroidery projects but incorporated them here.
 
   return (
     <FlatList

@@ -1,8 +1,9 @@
 //Alli Linhart 2024
+
 //imports from react libraries
-import { GestureHandler, GestureHandlerRootView} from "react-native-gesture-handler";
-import { StyleSheet, Text, View, Image, Platform, ScrollView } from 'react-native';
-import { useState, useRef, useEffect} from 'react';
+import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { StyleSheet, Text, View, Platform, useWindowDimensions } from 'react-native';
+import { useState, useRef, useEffect } from 'react';
 
 //imports from components folder
 import Button from './components/Button'
@@ -32,14 +33,26 @@ export default function App() {
 
   //modal->content presented above the app
   const [count, setCount] = useState(0);
-  
+
+  //WANTS:
+  //trying to adjust for screen size
+  //this is where my work would have continued
+  const {height, width} = useWindowDimensions();
+
   const imageRef = useRef();
 
+  //useEffect counts how long you have been in the app, sometimes the
+  //"timer" lags, I've notived whenever a pop-up shows up the timer lags
+  //for a bit, and then falls behind.
   useEffect(() => {
-    setInterval(() => {
+    const interval = this.setTimeout(() => {
       setCount(count +1);
-    }, 10);
+    }, 1000);
+    return () => {
+      clearInterval(this.interval);
+    }
   });
+
 
   const onReset = () => {
     setShowAppOptions(false);
@@ -53,6 +66,7 @@ export default function App() {
     setIsModalVisible(false);
   };
 
+//saves image on the web and android
   const onSaveImageAsync = async () => {
     if (Platform.OS !== 'web'){
     try{
@@ -104,11 +118,10 @@ export default function App() {
     }
   }
   
+//WANTS:
 //turn circle button into a choose photo button instead of emoji sticker button
 //use click and drag to move the photo around the page. Collage-ify the
 
-//<View count= {count+1}> </View>
-//onPress={()=>setCount(count+1)}
   return (
     <GestureHandlerRootView style={styles.container}>
       <View style= {styles.imageContainer}>
@@ -123,8 +136,12 @@ export default function App() {
               <CircleButton onPress={onAddSticker} />
               <IconButton icon="refresh" label="Reset" onPress={onReset}/>
               <IconButton icon="save-alt" label="Save" onPress={onSaveImageAsync} />
-              <IconButton icon= "plus-one" label= "Count" onPress={(count) => count +1}/>
-              <text> Count: {count} times</text>
+              {/*<IconButton icon= "plus-one" label= "Count" onPress={count}/>
+              Decided to remove a clickable button and made the use effect more
+              of */}
+            </View>
+            <View style ={styles.counter}>
+            <Text> Count: {count} </Text>
             </View>
         </View>
         ) : (
@@ -154,7 +171,7 @@ const styles = StyleSheet.create({
   },
   imageContainer:{
     flex: 1,
-    paddingTop: 60,
+    paddingTop: 40,
   },
   optionsContainer: {
     position: 'absolute',
@@ -164,4 +181,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flexDirection: 'row',
   },
+  counter: {
+    alignItems: 'center',
+    backgroundColor: '#ff69b4',
+    borderRadius: 42,
+    padding: 3,
+  }
 });
